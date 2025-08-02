@@ -4,6 +4,10 @@ import LogoDark from '../assets/img/logoDark.png';
 import { useEffect } from "react";
 import { router } from "expo-router";
 
+//themed componenets
+import ThemedView from '../components/ThemedView';
+import Spacer from '../components/Spacer';
+import EnchantedText from "../components/EnchantedText";
 const SplashScreen = () => {
 
     const colorScheme = useColorScheme();
@@ -15,16 +19,19 @@ const SplashScreen = () => {
 
     useEffect(() => {
         setTimeout(() => {
-        router.replace("/home"); // navigating to the home directory aftert 3.5 seconds
+        router.replace("/home"); // navigating to the home directory after 3.5 seconds
         }, 3500);
     }, []);
 
-
   return (
-    <View style={styles.container}>
+    <ThemedView style={styles.container}>
       <Image source={pickLogo()} style={styles.image} />
-      <Text style={styles.tagline}>One good thing is more than zero</Text>
-    </View>
+
+        <EnchantedText style={styles.tagline}>
+            One good thing is more than zero
+        </EnchantedText>
+    
+    </ThemedView>
   );
 };
 
@@ -45,8 +52,9 @@ const styles = StyleSheet.create({
 
   tagline: {
     marginTop: 20,
-    fontSize: 18,
-    color: '#444',
+    fontSize: 22,
+    fontWeight: 'bold',
+    //color: '#444',
   },
 
   image: {

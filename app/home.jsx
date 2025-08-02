@@ -1,6 +1,7 @@
 import { StyleSheet, Text, useColorScheme, View } from "react-native"
 import { Link } from 'expo-router';
 import {Colors} from "../constants/Colors"
+import EnchantedText from "../components/EnchantedText";
 
 
 const Home = () => {
@@ -11,9 +12,15 @@ const Home = () => {
 
     return (
         <View style={[styles.container, {backgroundColor: theme.background}]}>
-            <Text style={styles.title}>Home page (General information about the app and navigation to the log in/register page)</Text>
 
-            <Link href={"/contact"} style={styles.link}>Log out</Link>
+            <EnchantedText style={styles.title}>
+            Home page (General information about the app and navigation to the log in/register page)
+
+            </EnchantedText>
+
+            <Link href={"/login"} style={styles.link}>Login</Link>
+            <Link href={"/register"} style={styles.link}>Register</Link>
+
         </View>
     )
 

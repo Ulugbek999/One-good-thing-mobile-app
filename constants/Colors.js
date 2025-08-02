@@ -1,23 +1,23 @@
 export const Colors = {
-    primary: '#6849a7',
-    warning: '#cc475a',
+    primary: '#7A5C45', // earthy brown
+    warning: '#A63D40', // dark muted red for warnings
 
     dark: {
-        text: '#d4d4d4',
-        title: '#fff',
-        background: '#252231',
-        navBackground: '#201e2b',
-        iconColor: '#9591a5',
-        iconColorFocused: '#fff',
-        uiBackground: '#2f2b3d',
+        text: '#E1DCC5', // warm light beige
+        title: '#FFFBE6', // off-white for high contrast titles
+        background: '#4B3F35', // dark brown
+        navBackground: '#3A322A', // deeper brown for nav
+        iconColor: '#A39A88', // desaturated brown-gray
+        iconColorFocused: '#FFFBE6', // same light title color
+        uiBackground: '#5A4E42', // mid brown-gray
     },
     light: {
-        text: '#625f72',
-        title: '#201e2b',
-        background: '#e0dfe8',
-        navBackground: '#e8e7ef',
-        iconColor: '#686477',
-        iconColorFocused: '#201e2b',
-        uiBackground: '#d6d5e1',
+        text: '#5A4C3B', // earthy brown for text
+        title: '#2F2A22', // dark brown for headings
+        background: '#EFE9DC', // light sand background
+        navBackground: '#E2D8C3', // warm beige
+        iconColor: '#847661', // soft brown-gray
+        iconColorFocused: '#2F2A22', // matches title
+        uiBackground: '#DDD1BC', // soft beige/tan for UI
     },
-}
+};
