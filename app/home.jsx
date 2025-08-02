@@ -1,28 +1,19 @@
-import { StyleSheet, Text, View, Image } from "react-native";
-import LogoLight from '../assets/img/logoLight.png'; 
+import { StyleSheet, Text, View } from "react-native"
 import { Link } from 'expo-router';
 
-const SplashScreen = () => {
+const Home = () => {
     return (
-    
         <View style={styles.container}>
+            <Text style={styles.title}>Home Page (Login/Registration) </Text>
 
-        <Image source={LogoLight} style={styles.image} />
-
-            <Text style={styles.title}>One good thing is more than zero</Text>
-
-            <Link href="/home" style={styles.link}>Home</Link>
-            <Link href="/contact" style={styles.link}>Contact</Link>
-
+            <Link href={"/"} style={styles.link}>Log out</Link>
         </View>
-
+    )
 
     
-    )
 }
 
-export default SplashScreen;
-
+export default Home;
 const styles = StyleSheet.create({
 
     container: {
@@ -55,8 +46,4 @@ const styles = StyleSheet.create({
 
 
 
-
-
-    
-
-});
+})
