@@ -12,7 +12,9 @@ const EnchantedText = ({ style, title = false, ...props }) => {
             style={[
                 { 
                     color: ink, 
-                    fontFamily: 'FrederickaTheGreat_400Regular' // whimsical font here
+                    fontFamily: 'FrederickaTheGreat_400Regular', // whimsical font here
+                    fontWeight: 'bold',
+                    fontSize: 22
                 },
                 style
             ]}

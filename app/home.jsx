@@ -2,6 +2,7 @@ import { StyleSheet, Text, useColorScheme, View } from "react-native"
 import { Link } from 'expo-router';
 import {Colors} from "../constants/Colors"
 import EnchantedText from "../components/EnchantedText";
+import ThemedView from "../components/ThemedView";
 
 
 const Home = () => {
@@ -20,6 +21,10 @@ const Home = () => {
 
             <Link href={"/login"} style={styles.link}>Login</Link>
             <Link href={"/register"} style={styles.link}>Register</Link>
+            <Link href={"/profile"} style={styles.link}>Profile</Link>
+
+
+
 
         </View>
     )

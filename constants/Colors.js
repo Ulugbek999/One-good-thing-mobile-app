@@ -8,6 +8,7 @@ export const Colors = {
         background: '#4B3F35', // dark brown
         navBackground: '#3A322A', // deeper brown for nav
         iconColor: '#A39A88', // desaturated brown-gray
+        //tab icons
         iconColorFocused: '#FFFBE6', // same light title color
         uiBackground: '#5A4E42', // mid brown-gray
     },
@@ -16,8 +17,9 @@ export const Colors = {
         title: '#2F2A22', // dark brown for headings
         background: '#EFE9DC', // light sand background
         navBackground: '#E2D8C3', // warm beige
+        //tab icons
         iconColor: '#847661', // soft brown-gray
         iconColorFocused: '#2F2A22', // matches title
         uiBackground: '#DDD1BC', // soft beige/tan for UI
-    },
+    }
 };
