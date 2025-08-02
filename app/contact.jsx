@@ -1,12 +1,18 @@
-import { StyleSheet, Text, View } from "react-native"
+import { StyleSheet, Text, View, useColorScheme } from "react-native"
 import { Link } from 'expo-router';
+import { Colors } from "../constants/Colors";
 
 const Contact = () => {
-    return (
-        <View style={styles.container}>
-            <Text style={styles.title}>Contact Page </Text>
+    
+    const colorScheme = useColorScheme()
+    const theme = Colors[colorScheme] ?? Colors.light
 
-            <Link href={"/"} style={styles.link}>Log out</Link>
+
+    return (
+        <View style={[styles.container, {backgroundColor: theme.background}]}>
+            <Text style={styles.title}>Contact Page or maybe login/register page </Text>
+
+            <Link href={"/home"} style={styles.link}>Log out</Link>
         </View>
     )
 

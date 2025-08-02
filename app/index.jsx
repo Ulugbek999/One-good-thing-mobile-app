@@ -1,62 +1,65 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, useColorScheme } from "react-native";
 import LogoLight from '../assets/img/logoLight.png'; 
-import { Link } from 'expo-router';
+import LogoDark from '../assets/img/logoDark.png'; 
+import { useEffect } from "react";
+import { router } from "expo-router";
 
 const SplashScreen = () => {
-    return (
-    
-        <View style={styles.container}>
 
-        <Image source={LogoLight} style={styles.image} />
+    const colorScheme = useColorScheme();
 
-            <Text style={styles.title}>One good thing is more than zero</Text>
-
-            <Link href="/home" style={styles.link}>Home</Link>
-            <Link href="/contact" style={styles.link}>Contact</Link>
-
-        </View>
+    const pickLogo = () => {
+      return colorScheme === "light" ? LogoLight : LogoDark;
+    };
 
 
-    
-    )
-}
+    useEffect(() => {
+        setTimeout(() => {
+        router.replace("/home"); // navigating to the home directory aftert 3.5 seconds
+        }, 3500);
+    }, []);
+
+
+  return (
+    <View style={styles.container}>
+      <Image source={pickLogo()} style={styles.image} />
+      <Text style={styles.tagline}>One good thing is more than zero</Text>
+    </View>
+  );
+};
 
 export default SplashScreen;
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(122, 122, 122, 0.5)',
+  },
 
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: 'rgba(122, 122, 122, 0.5)',
+  title: {
+    fontWeight: 'bold',
+    fontSize: 24,
+  },
 
-    },  
+  tagline: {
+    marginTop: 20,
+    fontSize: 18,
+    color: '#444',
+  },
 
-    title: {
-        fontWeight: 'bold',
-        fontSize: 24,
-    },
+  image: {
+    marginVertical: 20,
+    width: 250,
+    height: 250,
+    borderRadius: 25,
+  },
 
-    image: {
-        marginVertical: 20,
-        width: 250,
-        height: 250,
-        borderRadius: 25
-
-    },
-
-    link: {
-        marginVertical: 10,
-        borderBottomWidth: 1,
-        fontWeight: 'bold',
-        fontSize: 24,
-    }
-
-
-
-
-
-    
-
+  link: {
+    marginVertical: 10,
+    borderBottomWidth: 1,
+    fontWeight: 'bold',
+    fontSize: 24,
+  },
 });
