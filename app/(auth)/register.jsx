@@ -8,11 +8,20 @@ import ThemedView from "../../components/ThemedView";
 import EnchantedText from "../../components/EnchantedText";
 import Spacer from "../../components/Spacer";
 import ThemedBtn from "../../components/ThemedBtn";
+import ThemedTextInput from "../../components/ThemedTextInput";
+import { useState } from "react";
 
 const register = () =>{
 
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')    
+
     const handleSubmit = () => {
-        console.log('register form submitted');
+        console.log('Register form submitted: Email: ', email, "; Password: ", password, "; ");
+
+        // add functionality to show success message and redirect to the login page
+
     }
 
 
@@ -26,9 +35,39 @@ const register = () =>{
                 Create new account
             </EnchantedText>
 
+            {/* Input fields for registration */}
+            <ThemedTextInput 
+            
+                style={{
+                    width: '80%',
+                    marginBottom: 20
 
-            <ThemedBtn onPress={handleSubmit}>
-                <EnchantedText style={{color: theme.EnchantedText}}>
+                }}
+                placeholder="Email"
+                keyboardType="email-address"
+                onChangeText={setEmail}
+                value={email}
+        
+            /> 
+
+            <ThemedTextInput 
+                    
+                style={{
+                    width: '80%',
+                    marginBottom: 20
+
+                }}
+                placeholder="Password"
+                onChangeText={setPassword}
+                value={password}
+                secureTextEntry
+                
+            /> 
+
+
+
+            <ThemedBtn onPress={handleSubmit} style={styles.btn}>
+                <EnchantedText style={{color: "white"}}>
                     Register
                 </EnchantedText>
             </ThemedBtn>
@@ -68,9 +107,14 @@ const styles = StyleSheet.create({
         marginBottom: 30
     },
     btn: {
+        alignItems: 'center',
         backgroundColor: Colors.primary,
         padding: 15,
         borderRadius: 5,
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.35,
+        shadowRadius: 4.84,        
     },
     pressed: {
         opacity: 0.8

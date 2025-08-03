@@ -1,5 +1,7 @@
-import { StyleSheet, Pressable, useColorScheme } from "react-native";  
+import { StyleSheet, Pressable, useColorScheme, TextInput, Keyboard } from "react-native";  
 import {Link} from 'expo-router'
+import { useState } from "react";
+
 
 //themed components
 
@@ -8,11 +10,25 @@ import EnchantedText from "../../components/EnchantedText";
 import Spacer from "../../components/Spacer";
 import { Colors } from "../../constants/Colors";
 import ThemedBtn from "../../components/ThemedBtn";
+import ThemedTextInput from "../../components/ThemedTextInput";
+import { TouchableWithoutFeedback } from "react-native";
+import { useUser } from "../../hooks/useUser";
 
 const login = () =>{
 
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const { user } = useUser();
+
+
     const handleSubmit = () => {
-        console.log('login form submitted');
+        console.log('current user: ', user)
+        console.log('login form submitted. Email: ', email, '; Password', password, ';');
+
+        //add functionality to redirect to the profile after succesfull login
+        //handle errors with unsuccsesful login
+        
     }
 
     const colorScheme = useColorScheme()
@@ -20,40 +36,79 @@ const login = () =>{
 
 
     return(
-        <ThemedView style={styles.container}>
-            <Spacer/>
-            <EnchantedText title={true} style={styles.title}>
-                login into your account
-            </EnchantedText>
 
-            <ThemedBtn onPress={handleSubmit}>
-                <EnchantedText style={{color: theme.EnchantedText}}>
-                    Login
-                </EnchantedText>
-            </ThemedBtn>
+        //functionality to hide the keyboard when touching the screen at any place but the keyboard
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
 
-            {/* 
-            <Pressable 
-                onPress={handleSubmit}
-                style={({pressed}) => [styles.btn, pressed && styles.pressed ]}>
-                <EnchantedText style={{textAlign: 'center', color: 'white'}}>Login</EnchantedText>
-            </Pressable> */}
-
-            <Spacer height={100}/>
-            <Link href={'/register'}>
-                <EnchantedText style={{textAlign: 'center'}}>
-                    Register
+            <ThemedView style={styles.container}>
+                <Spacer/>
+                <EnchantedText title={true} style={styles.title}>
+                    login into your account
                 </EnchantedText>
 
-            </Link>
-            <Spacer/>
-            <Link href={'/home'}>
-                <EnchantedText style={{textAlign: 'center'}}>
-                    Home
-                </EnchantedText>
-            </Link>
+                {/* input fields for the login information */}
 
-        </ThemedView>
+                <ThemedTextInput 
+                        
+                    style={{
+                        width: '80%',
+                        marginBottom: 20
+
+                    }}
+                    placeholder="Email"
+                    keyboardType="email-address"
+                    onChangeText={setEmail}
+                    value={email}
+                        
+                /> 
+
+                <ThemedTextInput 
+                                    
+                    style={{
+                        width: '80%',
+                        marginBottom: 20
+
+                        }}
+                        placeholder="Password"
+                        onChangeText={setPassword}
+                        value={password}
+                        secureTextEntry
+                                
+                /> 
+
+                <Spacer/>
+                <ThemedBtn onPress={handleSubmit} style={styles.btn}>
+                    <EnchantedText   style={{color: 'white'}}>
+                        Login
+                    </EnchantedText>
+                </ThemedBtn>
+
+                {/* 
+                    <Pressable 
+                        onPress={handleSubmit}
+                        style={({pressed}) => [styles.btn, pressed && styles.pressed ]}>
+                        <EnchantedText style={{textAlign: 'center', color: 'white'}}>Login</EnchantedText>
+                    </Pressable> */}
+
+                <Spacer height={30}/>
+                <Link href={'/register'}>
+                    <EnchantedText style={{textAlign: 'center'}}>
+                        Register
+                    </EnchantedText>
+
+                </Link>
+                <Spacer height={15}/>
+                <Link href={'/home'}>
+                    <EnchantedText style={{textAlign: 'center'}}>
+                        Home
+                    </EnchantedText>
+                </Link>
+
+            </ThemedView>
+
+        </TouchableWithoutFeedback>
+
+        
 
     )
 }   
@@ -73,9 +128,15 @@ const styles = StyleSheet.create({
         marginBottom: 30
     },
     btn: {
+        width: 100,
+        alignItems: 'center',
         backgroundColor: Colors.primary,
         padding: 15,
         borderRadius: 5,
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.35,
+        shadowRadius: 4.84,        
     },
     pressed: {
         opacity: 0.8

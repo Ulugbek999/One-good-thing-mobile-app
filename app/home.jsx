@@ -14,8 +14,8 @@ const Home = () => {
     return (
         <View style={[styles.container, {backgroundColor: theme.background}]}>
 
-            <EnchantedText style={styles.title}>
-            Home page (General information about the app and navigation to the log in/register page)
+            <EnchantedText style={[styles.title, {paddingLeft: 25, paddingBottom: 25}]}>
+            Home page (General information about the app)
 
             </EnchantedText>
 
