@@ -7,11 +7,12 @@ import { UserContext } from "../../contexts/UserContext";
 import { useUser } from "../../hooks/useUser";
 import ThemedBtn from "../../components/ThemedBtn";
 import { router } from "expo-router";
+import { Link } from "expo-router";
 
 const Profile = () => {
 
     //logout function
-    const { logout } = useUser();
+    const { logout, user } = useUser();
 
 
     const handleLogout = async () => {
@@ -23,16 +24,32 @@ const Profile = () => {
     return(
         <ThemedView style={styles.container}>
 
-            <EnchantedText title={true} style={styles.heading}>
-                Your email
-            </EnchantedText>
+        {user ? (
+        <EnchantedText title={true} style={styles.heading}>
+            {user.email}
+        </EnchantedText>
+        ) : (
+        <EnchantedText title={true} style={styles.heading}>
+            No user currently logged in. Log in from the home page
+            {/* add login option */}
+            <Spacer/>
+
+            <Link href={"../home"} style={[styles.link, {alignItems: "center"}]}>Home</Link>
+
+
+        </EnchantedText>
+        )}
             
             <Spacer/>
 
             <EnchantedText >Time to log some good deeds! </EnchantedText>
-
+            <Spacer/>
+            <Spacer/>
+            <Spacer/>
+            <Spacer/>
+            <Spacer/>
             <ThemedBtn onPress={handleLogout} >
-                <EnchantedText> logout </EnchantedText>
+                <EnchantedText style={{color: 'white'}}> logout </EnchantedText>
                 
             </ThemedBtn>
 
@@ -57,5 +74,13 @@ const styles = StyleSheet.create({
         fontSize: 16,
         textAlign: "center",
     },
+
+    link: {
+        marginVertical: 10,
+        borderBottomWidth: 1,
+        fontWeight: 'bold',
+        fontSize: 24,
+    }
+
 
 })
