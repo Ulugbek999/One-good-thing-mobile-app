@@ -3,8 +3,23 @@ import { StyleSheet } from "react-native";
 import Spacer from "../../components/Spacer"
 import EnchantedText from "../../components/EnchantedText";
 import ThemedView from "../../components/ThemedView";
+import { UserContext } from "../../contexts/UserContext";
+import { useUser } from "../../hooks/useUser";
+import ThemedBtn from "../../components/ThemedBtn";
+import { router } from "expo-router";
 
 const Profile = () => {
+
+    //logout function
+    const { logout } = useUser();
+
+
+    const handleLogout = async () => {
+        await logout();  // Calling the logout
+        router.replace("../home"); // Navigate to the home page after logout
+      };
+
+
     return(
         <ThemedView style={styles.container}>
 
@@ -15,6 +30,11 @@ const Profile = () => {
             <Spacer/>
 
             <EnchantedText >Time to log some good deeds! </EnchantedText>
+
+            <ThemedBtn onPress={handleLogout} >
+                <EnchantedText> logout </EnchantedText>
+                
+            </ThemedBtn>
 
         </ThemedView>
     )

@@ -14,6 +14,7 @@ import ThemedTextInput from "../../components/ThemedTextInput";
 import { TouchableWithoutFeedback } from "react-native";
 import { useUser } from "../../hooks/useUser";
 import { account, avatars } from '../../lib/appwrite';
+import { router } from "expo-router";
 
 
 const login = () =>{
@@ -33,6 +34,8 @@ const login = () =>{
             const user = await account.get();
             
             console.log('Login successful: ', user);
+            router.replace("/(dashboard)/create"); // navigating to the profile page after a successful login
+            
 
         }catch(error){
             //console.log(error.message);
