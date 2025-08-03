@@ -14,7 +14,7 @@ const Profile = () => {
             
             <Spacer/>
 
-            <EnchantedText>Time to log some good deeds! </EnchantedText>
+            <EnchantedText >Time to log some good deeds! </EnchantedText>
 
         </ThemedView>
     )
@@ -25,13 +25,16 @@ export default Profile;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
+        justifyContent: "top",
+        alignItems: "left",
+        paddingLeft: 25,
+        paddingRight: 25,
+        paddingTop: 75
     },
 
     header: {
         fontWeight: "bold",
-        fontSize: 18,
+        fontSize: 16,
         textAlign: "center",
     },
 

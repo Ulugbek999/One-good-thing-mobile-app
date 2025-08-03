@@ -35,26 +35,30 @@ const DashboardLayout = () => {
                 )}}
             />
 
+
             <Tabs.Screen 
-                name="calendar"
-                options={{title: "Create", tabBarIcon: ({focused}) => (
+                name="create"
+                options={{title: "Create", tabBarIcon:({focused}) => (
                     <Ionicons
                         size={24}
                         name={focused ? 'newspaper' : 'newspaper-outline'}
+                        color={focused ? theme.iconColorFocused : theme.iconColor}
+                    />
+                )}}
+            />  
+
+
+            <Tabs.Screen 
+                name="calendar"
+                options={{title: "Calendar", tabBarIcon: ({focused}) => (
+                    <Ionicons
+                        size={24}
+                        name={focused ? 'calendar' : 'calendar-outline'}
                     />
                 )}}
             /> 
 
-            <Tabs.Screen 
-                name="create"
-                options={{title: "Calendar", tabBarIcon:({focused}) => (
-                    <Ionicons
-                        size={24}
-                        name={focused ? 'calendar' : 'calendar-outline'}
-                        color={focused ? theme.iconColorFocused : theme.iconColor}
-                    />
-                )}}
-            />          
+        
 
 
 
