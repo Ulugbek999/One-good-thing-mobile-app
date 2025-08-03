@@ -1,4 +1,4 @@
-import { StyleSheet, Pressable, useColorScheme } from "react-native";  
+import { StyleSheet, Pressable, useColorScheme,Text } from "react-native";  
 import {Link} from 'expo-router'
 import { Colors } from "../../constants/Colors";
 
@@ -10,15 +10,28 @@ import Spacer from "../../components/Spacer";
 import ThemedBtn from "../../components/ThemedBtn";
 import ThemedTextInput from "../../components/ThemedTextInput";
 import { useState } from "react";
+import { useUser } from "../../hooks/useUser";
 
-const register = () =>{
+const register = () => {
 
 
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')    
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState(null);
+    
+    //to register a user:
+    const {  register } = useUser();
 
-    const handleSubmit = () => {
-        console.log('Register form submitted: Email: ', email, "; Password: ", password, "; ");
+    const handleSubmit = async () => {
+        setError(null);
+
+        try{
+            await register(email, password);
+            console.log('Register form submitted: Email: ', email, "; Password: ", password, "; ");
+
+        }catch(error){
+            setError(error.message);
+        }
 
         // add functionality to show success message and redirect to the login page
 
@@ -71,6 +84,9 @@ const register = () =>{
                     Register
                 </EnchantedText>
             </ThemedBtn>
+            <Spacer/>
+            {error &&  <Text style={styles.error}> {error} </Text>}
+            
 
 
             {/* <Pressable 
@@ -118,6 +134,15 @@ const styles = StyleSheet.create({
     },
     pressed: {
         opacity: 0.8
+    },
+    error: {
+        color: Colors.warning,
+        padding: 10,
+        backgroundColor: '#f5c1c8',
+        borderColor: Colors.warning,
+        borderWidth: 1,
+        borderRadius: 6,
+        marginHorizontal: 10,
     }
 
 
