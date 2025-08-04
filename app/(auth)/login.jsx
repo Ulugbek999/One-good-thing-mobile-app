@@ -1,4 +1,4 @@
-import { StyleSheet, Pressable, useColorScheme, TextInput, Keyboard, Text } from "react-native";  
+import { StyleSheet, useColorScheme, Keyboard, Text } from "react-native";  
 import {Link} from 'expo-router'
 import { useState } from "react";
 
@@ -15,6 +15,7 @@ import { TouchableWithoutFeedback } from "react-native";
 import { useUser } from "../../hooks/useUser";
 import { account, avatars } from '../../lib/appwrite';
 import { router } from "expo-router";
+import ThemedLoader from "../../components/ThemedLoader"
 
 
 const login = () =>{
@@ -120,6 +121,9 @@ const login = () =>{
                     </EnchantedText>
                 </Link>
 
+                
+
+
             </ThemedView>
 
         </TouchableWithoutFeedback>
@@ -166,6 +170,7 @@ const styles = StyleSheet.create({
         borderRadius: 6,
         marginHorizontal: 10,
     }
+
 
 
 })

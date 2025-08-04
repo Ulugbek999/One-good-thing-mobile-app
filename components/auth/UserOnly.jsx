@@ -2,6 +2,7 @@ import { useRouter } from "expo-router"
 import { useUser } from "../../hooks/useUser"
 import { useEffect } from "react"
 import EnchantedText from "../EnchantedText"
+import ThemedLoader from "../ThemedLoader"
 
 
 
@@ -20,7 +21,8 @@ const UserOnly = ({children}) => {
 
     if(!authChecked || !user){
         return(
-            <EnchantedText>Loading</EnchantedText>
+            <ThemedLoader/>
+
         )
     }
 
