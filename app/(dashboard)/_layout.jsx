@@ -2,6 +2,7 @@ import { Tabs } from "expo-router";
 import { useColorScheme } from "react-native";
 import { Colors } from "../../constants/Colors";
 import { Ionicons } from "@expo/vector-icons";
+import UserOnly from "../../components/auth/UserOnly";
 
 
 const DashboardLayout = () => {
@@ -9,6 +10,11 @@ const DashboardLayout = () => {
     const theme = colorScheme[Colors] ?? Colors.light; //as a backup in case the value is null defaulting to light theme
 
     return (
+
+        <UserOnly>
+
+
+
         <Tabs
             screenOptions={{
                 headerShown: false,
@@ -63,6 +69,9 @@ const DashboardLayout = () => {
 
 
         </Tabs>
+
+
+        </UserOnly>
     )
 
 
