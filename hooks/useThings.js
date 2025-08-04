@@ -6,7 +6,7 @@ export function useThings() {
     const context = useContext(GoodThingsContext)
 
     if(!context){
-        throw("useUser must be used within the GoodThingsProvider");
+        throw("useThings must be used within the GoodThingsProvider");
     }
 
 

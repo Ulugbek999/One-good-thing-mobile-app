@@ -3,7 +3,7 @@ import { Stack } from "expo-router";
 import { Colors } from "../constants/Colors";
 import { StatusBar } from "expo-status-bar";
 import { UserProvider } from "../contexts/UserContext";
-import { GoodThingsContext } from "../contexts/GoodThingsContext";
+import { GoodThingsProvider } from "../contexts/GoodThingsContext";
 
 const RootLayout = () => {
   const colorScheme = useColorScheme();
@@ -11,8 +11,8 @@ const RootLayout = () => {
 
   return (
     <UserProvider>
-        <GoodThingsContext>
-          <StatusBar />
+        <GoodThingsProvider>
+          <StatusBar value="auto" />
           <Stack
             screenOptions={{
               headerStyle: { backgroundColor: theme.navBackground },
@@ -25,7 +25,7 @@ const RootLayout = () => {
             <Stack.Screen name="(auth)" options={{headerShown: false}}/>
             <Stack.Screen name="(dashboard)" options={{headerShown: false}}/>
           </Stack>
-        </GoodThingsContext>
+        </GoodThingsProvider>
 
     </UserProvider>
   );
