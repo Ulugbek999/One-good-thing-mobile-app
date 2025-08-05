@@ -14,7 +14,7 @@ import { useState } from "react";
 const Create = () => {
 
     const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
+    const [notes, setNotes] = useState("");
     const [loading, setLoading] = useState(false);
 
     const {createThing} = useThings();
@@ -24,11 +24,11 @@ const Create = () => {
         //if(!title.trim()) return
         
         setLoading(true);
-        await createThing({title, description})
+        await createThing({title, notes})
         //add error handling later
 
         setTitle("");
-        setDescription("");
+        setNotes("");
         //redirect the user
         router.replace('/calendar');
 
@@ -53,10 +53,10 @@ const Create = () => {
                 <Spacer/>
 
                 <ThemedTextInput
-                    style={styles.input}
+                    style={[styles.input, {paddingTop: 80}]}
                     placeholder="Additional notes..."
-                    value={description}
-                    onChangeText={setDescription}
+                    value={notes}
+                    onChangeText={setNotes}
                     multiline = {true}
                 />
                 <Spacer/>
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
         padding: 20,
         borderRadius: 6,
         alignSelf: 'stretch',
-        marginHorizontal: 40,
+        marginHorizontal: 40
     },
     multiline: {
         padding: 20,

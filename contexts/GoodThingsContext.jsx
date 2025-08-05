@@ -1,12 +1,12 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { databases } from '../lib/appwrite';
-import { ID, Permission, Role } from 'react-native-appwrite';
+import { ID, Permission, Query, Role } from 'react-native-appwrite';
 import { useUser } from '../hooks/useUser';
 
 
 export const GoodThingsContext = createContext();
 
-const DATABASE_ID = "6890e8560017a5ba2f83";
+const DATABASE_ID = "6890e83e0013423e831d";
 const COLLECTION_ID = "6890e8560017a5ba2f83";
 
 
@@ -19,7 +19,15 @@ export function GoodThingsProvider({children}){
 
     async function fetchThings(){
         try{
-
+            const response = await databases.listDocuments(
+                DATABASE_ID, COLLECTION_ID,
+                [
+                    //query to fetch
+                    Query.equal('user_id', user.$id)
+                ]
+            )
+            setThings(response.documents)
+            console.log(response.documents)
         }catch(error){
             console.log(error.message);
         }
@@ -33,6 +41,13 @@ export function GoodThingsProvider({children}){
         }
     }
 
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const dd = String(today.getDate()).padStart(2, '0');
+    const localDateString = `${yyyy}-${mm}-${dd}`;
+
+
     async function createThing(data){
         try{
 
@@ -40,7 +55,9 @@ export function GoodThingsProvider({children}){
                 DATABASE_ID,
                 COLLECTION_ID,
                 ID.unique(),
-                {...data, userId: user.$id },
+                {...data, user_id: user.$id, date_logged: localDateString },
+                
+
                 //an array of document permissions
                 [
                     Permission.read(Role.user(user.$id)), // only the current user is allowed to read
@@ -49,6 +66,9 @@ export function GoodThingsProvider({children}){
                 
                 ]
             )
+
+            setThings(prev => [newThing, ...prev]);
+
 
         }catch(error){
             console.log(error.message)
@@ -62,6 +82,16 @@ export function GoodThingsProvider({children}){
             console.log(error.message)
         }
     }
+
+    useEffect(() => {
+
+        if(user){
+            fetchThings()
+        }else{
+            setThings([])
+        }
+
+    }, [user])
 
     return (
         <GoodThingsContext.Provider

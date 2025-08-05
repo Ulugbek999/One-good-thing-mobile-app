@@ -15,7 +15,8 @@ const Home = () => {
         <View style={[styles.container, {backgroundColor: theme.background}]}>
 
             <EnchantedText style={[styles.title, {paddingLeft: 25, paddingBottom: 25}]}>
-            Home page (General information about the app)
+
+                One Good Thing is an app that lets you log in one (or more) good things you did today!
 
             </EnchantedText>
 
