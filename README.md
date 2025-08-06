@@ -2,7 +2,6 @@
 
 One Good Thing is a beautifully simple React Native app built with Expo and Appwrite that helps users reflect on their day by logging one good thing they experienced — every day.
 
-![App Screenshot](https://img.youtube.com/vi/a6gS1_x1gG4/0.jpg)
 
 ## 📽️ Demo Video
 
@@ -49,8 +48,6 @@ app/
 ├── constants/ # Theme + global styling
 
 yaml
-Copy
-Edit
 
 ---
 
@@ -62,9 +59,7 @@ Edit
 git clone https://github.com/your-username/one-good-thing.git
 cd one-good-thing
 2. Install dependencies
-bash
-Copy
-Edit
+
 npm install
 3. Set up Appwrite
 Create an Appwrite project
@@ -76,8 +71,6 @@ Fields: userId (string), date (string), goodThing (string)
 Add your Appwrite config to the project
 
 4. Run the app
-bash
-Copy
-Edit
+
 npx expo start
 Use Expo Go on your phone or an Android emulator to test.
