@@ -26,6 +26,7 @@ const Profile = () => {
 
         {user ? (
         <EnchantedText title={true} style={styles.heading}>
+            <EnchantedText>Your email: </EnchantedText>
             {user.email}
         </EnchantedText>
         ) : (
@@ -39,12 +40,14 @@ const Profile = () => {
 
         </EnchantedText>
         )}
-            
+            <Spacer/>
+            <Spacer/>
+
+            <EnchantedText> User information here</EnchantedText>
+                        
             <Spacer/>
 
             <EnchantedText >Time to log some good deeds! </EnchantedText>
-            <Spacer/>
-            <Spacer/>
             <Spacer/>
             <Spacer/>
             <Spacer/>

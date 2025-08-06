@@ -13,11 +13,13 @@ const Home = () => {
 
     return (
         <View style={[styles.container, {backgroundColor: theme.background}]}>
+            <EnchantedText style={[styles.title, {textAlign: 'center', paddingLeft: 25, paddingBottom: 55, paddingRight: 25, fontSize: 24}]}>
+                Welcome to One Good Thing!
 
-            <EnchantedText style={[styles.title, {paddingLeft: 25, paddingBottom: 25}]}>
+            </EnchantedText>
+            <EnchantedText style={[styles.title, {paddingLeft: 20,paddingRight: 20, paddingBottom: 55, fontSize: 20, textAlign: 'center'}]}>
 
-                One Good Thing is an app that lets you log in one (or more) good things you did today!
-
+            One Good Thing is your daily journal for positive actions—add the good things you did today and look back any time.
             </EnchantedText>
 
             <Link href={"/login"} style={styles.link}>Login</Link>

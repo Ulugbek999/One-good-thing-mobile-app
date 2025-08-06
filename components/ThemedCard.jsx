@@ -1,5 +1,5 @@
 //a component for themed card colors
-
+import { StyleSheet } from 'react-native';
 import {View, useColorScheme} from 'react-native';
 import {Colors} from '../constants/Colors';
 
@@ -20,7 +20,7 @@ const ThemedCard = ({style,...props}) => {
 
 export default ThemedCard;
 
-const styles = StylesSheet.create({
+const styles = StyleSheet.create({
     card: {
         borderRadius: 5,
         padding: 20
