@@ -17,7 +17,7 @@ export default function CalendarScreen() {
 
   const [selectedDate, setSelectedDate] = useState();
   const [expandedIds, setExpandedIds] = useState([]);
-  const { things } = useThings();
+  const { things, deleteThing } = useThings();
 
 const colorScheme = useColorScheme();
 const theme = Colors[colorScheme] ?? Colors.light;
@@ -109,9 +109,26 @@ const theme = Colors[colorScheme] ?? Colors.light;
           <Pressable key={item.$id} onPress={() => toggleExpand(item.$id)}>
             <ThemedCard style={styles.card}>
               <EnchantedText style={styles.title}>{item.title}</EnchantedText>
-              {expandedIds.includes(item.$id) && item.notes ? (
-                <EnchantedText style={styles.notes}>{item.notes}</EnchantedText>
-              ) : null}
+
+                {/* delete a note */}
+                {expandedIds.includes(item.$id) && (
+
+                    <>
+                        {item.notes ? (
+                            <EnchantedText style={styles.notes}>{item.notes}</EnchantedText>
+                        ) : null}
+                        <Pressable
+                            style={[styles.deleteBtn, {backgroundColor: theme.warning}]}
+                            onPress={() => deleteThing(item.$id)}
+                        >
+                            <EnchantedText>Delete</EnchantedText>
+                        </Pressable>
+                    </>
+                )}
+
+
+
+
             </ThemedCard>
           </Pressable>
         ))
@@ -123,6 +140,20 @@ const theme = Colors[colorScheme] ?? Colors.light;
 }
 
 const styles = StyleSheet.create({
+
+    deleteBtn: {
+        marginTop: 14,
+        alignSelf: "flex-end",
+        paddingVertical: 7,
+        paddingHorizontal: 18,
+        borderRadius: 6,
+        // Optionally, add a little shadow for visibility
+        shadowOpacity: 0.07,
+        shadowRadius: 5,
+        elevation: 2,
+    },
+
+
   card: {
     width: "93%",
     marginHorizontal: "3%",

@@ -77,6 +77,8 @@ export function GoodThingsProvider({children}){
 
     async function deleteThing(id){
         try{
+            await databases.deleteDocument(DATABASE_ID, COLLECTION_ID, id);
+            setThings(prev => prev.filter(thing => thing.$id !== id));
 
         }catch(error){
             console.log(error.message)
