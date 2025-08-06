@@ -11,6 +11,7 @@ import ThemedBtn from "../../components/ThemedBtn";
 import ThemedTextInput from "../../components/ThemedTextInput";
 import { useState } from "react";
 import { useUser } from "../../hooks/useUser";
+import BackgroundWrapper from "../../components/BackgroundWrapper";
 
 const register = () => {
 
@@ -42,6 +43,8 @@ const register = () => {
     const theme = Colors[colorScheme] ?? Colors.light
 
     return(
+
+        <BackgroundWrapper>
         <ThemedView style={styles.container}>
             <Spacer/>
             <EnchantedText title={true} style={styles.title}>
@@ -104,6 +107,7 @@ const register = () => {
             </Link>
 
         </ThemedView>
+        </BackgroundWrapper>
 
     )
 }   

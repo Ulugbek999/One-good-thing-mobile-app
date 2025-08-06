@@ -8,10 +8,16 @@ import ThemedTextInput from "../../components/ThemedTextInput";
 import { useThings } from "../../hooks/useThings";
 import { useRouter } from "expo-router";
 import { useState } from "react";
+import BackgroundWrapper from "../../components/BackgroundWrapper";
+import { useColorScheme } from "react-native";
+import { Colors } from "../../constants/Colors";
 
 
 
 const Create = () => {
+
+    const colorScheme = useColorScheme();
+    const theme = Colors[colorScheme] ?? Colors.light;
 
     const [title, setTitle] = useState("");
     const [notes, setNotes] = useState("");
@@ -37,6 +43,7 @@ const Create = () => {
     }
 
     return (
+        <BackgroundWrapper>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <ThemedView style={styles.container}>
                 <EnchantedText title={true} style={styles.header}>
@@ -53,7 +60,12 @@ const Create = () => {
                 <Spacer/>
 
                 <ThemedTextInput
-                    style={[styles.input, {paddingTop: 80}]}
+                    style={[styles.input, {paddingTop: 80,
+                        shadowColor: theme.title,
+                        shadowOpacity: 0.20,
+                        shadowRadius: 5,
+                        elevation: 3,
+                    }]}
                     placeholder="Additional notes..."
                     value={notes}
                     onChangeText={setNotes}
@@ -69,7 +81,7 @@ const Create = () => {
 
             </ThemedView>
         </TouchableWithoutFeedback>
-
+        </BackgroundWrapper>
 
     )
 }
@@ -88,7 +100,7 @@ const styles = StyleSheet.create({
 
     header: {
         fontWeight: "bold",
-        fontSize: 16,
+        fontSize: 24,
         textAlign: "center",
     },
     input: {

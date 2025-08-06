@@ -1,4 +1,4 @@
-import { StyleSheet, useColorScheme, Keyboard, Text } from "react-native";  
+import { StyleSheet, useColorScheme, Keyboard } from "react-native";  
 import {Link} from 'expo-router'
 import { useState } from "react";
 
@@ -16,6 +16,7 @@ import { useUser } from "../../hooks/useUser";
 import { account, avatars } from '../../lib/appwrite';
 import { router } from "expo-router";
 import ThemedLoader from "../../components/ThemedLoader"
+import BackgroundWrapper from "../../components/BackgroundWrapper";
 
 
 const login = () =>{
@@ -53,7 +54,8 @@ const login = () =>{
 
     return(
 
-        //functionality to hide the keyboard when touching the screen at any place but the keyboard
+        <BackgroundWrapper>
+
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
 
             <ThemedView style={styles.container}>
@@ -127,6 +129,7 @@ const login = () =>{
             </ThemedView>
 
         </TouchableWithoutFeedback>
+        </BackgroundWrapper>
 
         
 

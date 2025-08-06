@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { ImageBackground, StyleSheet } from "react-native";
 
 import Spacer from "../../components/Spacer"
 import EnchantedText from "../../components/EnchantedText";
@@ -8,6 +8,9 @@ import { useUser } from "../../hooks/useUser";
 import ThemedBtn from "../../components/ThemedBtn";
 import { router } from "expo-router";
 import { Link } from "expo-router";
+import BackgroundWrapper from "../../components/BackgroundWrapper";
+
+
 
 const Profile = () => {
 
@@ -21,8 +24,14 @@ const Profile = () => {
       };
 
 
+
+
     return(
+
+        <BackgroundWrapper>
+
         <ThemedView style={styles.container}>
+
 
         {user ? (
         <EnchantedText title={true} style={styles.heading}>
@@ -55,9 +64,10 @@ const Profile = () => {
                 <EnchantedText style={{color: 'white'}}> logout </EnchantedText>
                 
             </ThemedBtn>
-
         </ThemedView>
+        </BackgroundWrapper>
     )
+    
 }
 
 export default Profile;

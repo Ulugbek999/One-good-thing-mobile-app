@@ -8,6 +8,8 @@ import { router } from "expo-router";
 import ThemedView from '../components/ThemedView';
 import Spacer from '../components/Spacer';
 import EnchantedText from "../components/EnchantedText";
+
+
 const SplashScreen = () => {
 
     const colorScheme = useColorScheme();

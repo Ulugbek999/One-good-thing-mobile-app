@@ -8,6 +8,7 @@ import { Colors } from '../../constants/Colors';
 import ThemedCard from '../../components/ThemedCard';
 import { useColorScheme } from 'react-native';
 import { ScrollView } from 'react-native';
+import BackgroundWrapper from '../../components/BackgroundWrapper';
 
 
 export default function CalendarScreen() {
@@ -35,16 +36,20 @@ const theme = Colors[colorScheme] ?? Colors.light;
 
   
   return (
+    <BackgroundWrapper>
+
+
     <ScrollView
-      style={{ flex: 1, backgroundColor: theme.background }}
+      style={{ flex: 1 }}
       contentContainerStyle={{ paddingBottom: 60, paddingTop: 10 }}
       showsVerticalScrollIndicator={false}
     >
       <Calendar
         style={{
-          backgroundColor: theme.background,
+          //backgroundColor: theme.background,
           borderRadius: 12,
-          padding: 6,
+          paddingTop: 35,
+          padding: 10,
           shadowColor: theme.title,
           shadowOpacity: 0.06,
           shadowRadius: 5,
@@ -112,6 +117,7 @@ const theme = Colors[colorScheme] ?? Colors.light;
         ))
       )}
     </ScrollView>
+    </BackgroundWrapper>
   );
   
 }

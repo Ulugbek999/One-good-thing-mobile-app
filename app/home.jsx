@@ -3,6 +3,7 @@ import { Link } from 'expo-router';
 import {Colors} from "../constants/Colors"
 import EnchantedText from "../components/EnchantedText";
 import ThemedView from "../components/ThemedView";
+import BackgroundWrapper from "../components/BackgroundWrapper";
 
 
 const Home = () => {
@@ -12,7 +13,8 @@ const Home = () => {
 
 
     return (
-        <View style={[styles.container, {backgroundColor: theme.background}]}>
+        <BackgroundWrapper>
+        <View style={[styles.container]}>
             <EnchantedText style={[styles.title, {textAlign: 'center', paddingLeft: 25, paddingBottom: 55, paddingRight: 25, fontSize: 24}]}>
                 Welcome to One Good Thing!
 
@@ -30,6 +32,7 @@ const Home = () => {
 
 
         </View>
+        </BackgroundWrapper>
     )
 
     
@@ -42,7 +45,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'rgba(122, 122, 122, 0.5)',
+        //backgroundColor: 'rgba(122, 122, 122, 0.5)',
 
     },  
 

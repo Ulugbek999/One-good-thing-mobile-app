@@ -4,12 +4,24 @@ import { Colors } from "../../constants/Colors";
 import { Ionicons } from "@expo/vector-icons";
 import UserOnly from "../../components/auth/UserOnly";
 
+import wallpaperLight from '../../assets/img/wallpaperLight.png'; 
+import wallpaperDark from '../../assets/img/wallpaperDark.png';
+import { ImageBackground } from "react-native";
+
+
+
+
 
 const DashboardLayout = () => {
     const colorScheme = useColorScheme();
     const theme = colorScheme[Colors] ?? Colors.light; //as a backup in case the value is null defaulting to light theme
 
+    
+    const bg = colorScheme === "light" ? wallpaperLight : wallpaperDark;
+
+
     return (
+        
 
         <UserOnly>
 
