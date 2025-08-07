@@ -61,7 +61,7 @@ app/
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/your-username/one-good-thing.git
+git clone https://github.com/Ulugbek999/one-good-thing.git
 cd one-good-thing
 
 2. Install dependencies
